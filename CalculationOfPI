@@ -1,0 +1,15 @@
+from math import sqrt
+from random import random
+
+all_circle_points = 0
+in_circle_points = 0
+precision = input("enter your except precision of Pi\n")
+
+for i in range(int(precision)):
+    x, y = random(), random()
+    if sqrt(x**2 + y**2) < 1:
+        in_circle_points += 1
+    all_circle_points += 1
+
+Pi_result = 4 * (in_circle_points / all_circle_points)
+print(Pi_result)
