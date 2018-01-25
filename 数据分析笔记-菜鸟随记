@@ -1,0 +1,128 @@
+数据分析：
+维基：数据概念-数据清理-数据转换-数据可视化
+明确思路-数据收集-数据处理-数据分析-数据展现
+
+Ipython:
+魔术命令：
+%timeit：多次执行后面一条语句计算运行平均时间
+%time 执行一次后面一条语句计算运行时间
+%%timeit、%%time执行多条语句
+%rest 删除当前空间全部变量
+%run *.py 在Ipython中执行python脚本
+魔术命令+（？）显示说明
+
+Python中任何数值、字符串、数据结构、函数、类、模块等都是对象。
+字符串和元组对象本身不可变
+
+datetime、strftime、strptime模块
+from datetime import datetime
+in[1] dt = datetime(2016, 12, 3, 15, 0, 0)
+in[2] print (dt.month, dt.day)
+out[2] 12 3
+in[3] dt.strftime('%Y/%m/%d %H:%M')
+out[3] '2016/12/03 15:00'
+in[4] datetime.strptime('20161203', '%Y%m%d')
+out[4] datetime.datetime(2016, 12, 3, 0, 0)
+
+对象引用问题：
+浅拷贝：[ : ]切片操作，copy()。只拷贝父对象，不拷贝对象内部子对象。
+深拷贝：deepcopy()同时拷贝父对象和子对象
+in:
+import copy
+a = [[1, 2, 3], [4, 5, 6]]
+b = a
+c = copy.copy(a)
+d = copy.deepcopy(a)
+print(id(a))
+print(id(b))
+print(id(c))
+print(id(d))
+a.append(15)
+a[1][2] = 10
+print(a)
+print(b)
+print(c)
+print(d)
+out:
+66053768
+66053768
+66621832
+66112456
+[[1, 2, 3], [4, 5, 10], 15]
+[[1, 2, 3], [4, 5, 10], 15]
+[[1, 2, 3], [4, 5, 10]]
+[[1, 2, 3], [4, 5, 6]]
+
+元组tuple：
+创建元组
+a = 1, 2, 3
+out: (1, 2, 3)
+b = (1, 2, 3), (1, 2, 3)
+out: ((1, 2 ,3) , (1, 2, 3))
+转换成元组
+tuple(x)
+tuple(str) 分隔每个字符串形成元组列表
+合并元组
+tup1 + tup2
+元组拆包
+tup1 = 1, 2, 3
+a, b, c = tup1
+out: a = 1, b = 2, c = 3 
+
+列表切片:
+print lst
+print lst[::2]
+print lst[::-1]（倒序排列）
+[0, 1, 2, 3, 4, 5, 6]
+[0, 2, 4, 6]
+[6, 5, 4, 3, 2, 1, 0]
+
+常用序列函数：
+enumerate 使列表每个元素变为带索引的小元组
+lst = ['a', 'b', 'c', 'd', 'e', 'f']
+for i,item in enumerate(lst):
+print '%i-%s' %(i, item)
+out :
+0-a
+1-b
+3-c
+4-d
+5-e
+6-f
+sorted 返回新的有序列表，不同于sort就地排序
+zip 将多个序列组成列表，并把对应位置的元素组成元组，以最小序列长度为列表长度
+lst1 = [1, 2, 3]
+lst2 = ['a', 'b', 'c']
+lst3 = ['e', 'f', 'g']
+print zip(lst1, lst2, lst3)
+out: [(1, 'a', 'e'), (2, 'b', 'f'), (3, 'c', 'g')]
+a = zip(lst1, lst2, lst3)
+print zip(*a) 解压缩
+out: [(1, 2, 3), ('a', 'b', 'c'), ('d', 'e', 'f')]
+reversed 逆序迭代
+
+字典：
+用hash(xxx) 来判断是否可以作为字典的键
+dict.update(dict1) 将dict1内新内容加入dict，已有相同键则更新为dict1内容
+
+集合的推导式：使用一句表达式构造序列
+列表：[exp for item in collection if condition]
+字典：{key_exp : value_exp for item in collection if condition}
+集合：{exp for item in collection if condition}
+
+函数式编程：
+map(func, lst)，将传入的函数变量func作用到lst变量的每个元素中，并将结果组成新的列表返回
+reduce(func(x, y), lst)，其中func必须有两个参数。每次func计算的结果继续和序列的下一个元素做累积计算
+filter(func, lst)，将func作用于lst的每个元素，然后根据返回值是True或False判断是保留还是丢弃该元素
+
+
+20180112
+NumPy,Numerical Python
+ 高性能科学计算和数据分析的基础包
+ndarray，多位数组（矩阵），具有矢量运算能力，快速／节省空间
+矩阵运算，无需循环，可完成类似Matlab中的矢量运算
+线性代数，随机数生成
+ndarray，N维数组对象（矩阵）所有元素必须是相同类型
+naim：维度个数
+shape：各维度大小
+dtype：数据类型
