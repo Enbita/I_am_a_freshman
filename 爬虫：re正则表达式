@@ -1,0 +1,62 @@
+Re库正则表达式
+简洁表达字符串
+可通过http://www.regexpal.com/来验证自己的正则表达式
+语法规则https://msdn.microsoft.com/zh-cn/library/ae5bf541(v=vs.90).aspx
+
+表达式符号：
+. 表示任何一个字符
+[ ] 字符集，对单个字符给出取值范围
+[^ ] 非字符集，对单个字符给出排除范围
+* 前一个字符0次或无限次扩展
++ 前一个字符1次或无限次扩展
+? 前一个字符0次或1次扩展
+| 左右表达式任意一个
+{m} 扩展前一个字符扩展m次
+{m, n} 扩展前一个字符m至n次（含n次）
+^ 匹配字符串开头
+$ 匹配字符串结尾
+() 分组标记，内部职能使用 | 操作符
+\d 数字，等价于[0-9]
+\w 单词字符，等价于[A-Za-z0-9]
+
+方法：
+re.search(pattern, string, flags=0) 在一个字符串中搜索匹配正则表达式的第一个位置，返回match对象
+pattern: 被匹配对象
+string: 需要匹配的对象
+flags: 控制标记：
+re.l: reOGNORECASE 忽略匹配的大小写限制
+re.M: re.MULTLINE 可以匹配字符串每行
+re.S: re.DOTALL 匹配所有字符，包括换行符
+
+re.match(pattern, string, flags=0) 从一个字符串的开始位置起匹配正则表达式，返回match对象
+
+re.findall(pattern, string, flags=0) 搜索字符串，以列表形式返回全部能匹配的字符串
+
+re.split(pattern, string, maxsplit=0, flags=0) 将一个字符串按照正则表达式匹配结果进行分割，返回列表类型
+maxsplit: 最大分割数， 剩余部分作为最后一个元素输出
+
+re.finditer(pattern, string, flags=0) 搜索字符串，返回一个匹配结果的迭代类型，每个迭代元素是match对象
+
+re.sub(pattrn, repl, string, count=0, flags=0) 在一个字符串中替换所有匹配正则表达式的子串，返回替换后的字符串
+repl: 替换匹配字符串的字符串
+count: 最大替换次数
+
+re.compile(pattern, flags=0)
+将函数赋给对象后，对象就可以使用re的方法
+
+match对象
+拥有属性：
+.string 待匹配的文本
+.re 匹配时使用的pattern对象（正则表达式）
+.pos 正则表达式搜索文本的开始位置
+.endpos 正则表达式搜索文本的结束位置
+拥有方法：
+.group(0) 获得匹配后的字符串
+.start() 匹配字符串在原始字符串的开始位置
+.end() 匹配字符串在原始字符串的结束位置
+.span() 返回(.start(), .end())
+
+PS：
+使用方法进行匹配，默认匹配最长字符（贪婪匹配）
+最小匹配操作符
+在+ * ？ {m, n}后面加上？可以使匹配结果改为最小匹配
