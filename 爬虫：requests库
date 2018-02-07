@@ -59,6 +59,6 @@ proxies：字典类型，设定访问代理服务器，可以增加登录认证
     r = requests.request('GET', 'http://www.baidu.com', proxies=pxs）
 allow_redirects：True/False，默认为True，重定向开关
 stream：True/False，默认为True，获取内容立即下载开关
-verify：True/False，默认为True，认证SSL证书
-
+verify：True/False，默认为True，认证SSL证书开关
+cert：本地SSL证书路径
 
