@@ -1,0 +1,9 @@
+Scrapy命令行格式
+>scrapy <command> [options] [args]
+常用命令
+创建工程：scrapy startproject <name> [dir]
+创建爬虫：scrapy genspider [options] <name> <domain>
+获取爬虫配置信息：scrapy settings [options]
+运行爬虫：scrapy crawl <spider>
+列出工程中所有爬虫：scrapy list
+启动URL调试命令行：scrapy shell [url]
