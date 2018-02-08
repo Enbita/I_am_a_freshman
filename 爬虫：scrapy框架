@@ -1,9 +1,30 @@
-Scrapy命令行格式
->scrapy <command> [options] [args]
-常用命令
-创建工程：scrapy startproject <name> [dir]
-创建爬虫：scrapy genspider [options] <name> <domain>
-获取爬虫配置信息：scrapy settings [options]
-运行爬虫：scrapy crawl <spider>
-列出工程中所有爬虫：scrapy list
-启动URL调试命令行：scrapy shell [url]
+Scrapy简介
+  ● 开源的爬虫框架
+  ● 易扩展
+Scrapy抓取过程
+  ● 使用start——urls作为初始url生成Request，默认将parse作为他的回调函数
+  ● 在parse函数中解析目标url
+Scrapy高级特性
+  ● 内置数据抽取器css/xpath/re
+  ● 交互式控制台用于调试
+  ● 结果输出的格式支持：JSON、CSV、XML等
+  ● 自动处理编码
+  ● 支持自定义扩展
+Scrapy使用步骤
+  ● 安装：pip install scrapy
+  ● 创建工程：scrapy startproject 工程名称
+  ● 定义Item：scrapy.Field()
+  ● 编写Spider：scrapy genspider 爬虫名称 网页地址
+  ● 编写配置和Pipeline：return item
+  ● 执行：scrapy crawl 爬虫名字
+Scrapy常用命令：
+  ● help：查看帮助，scrapy --help
+  ● version：查看版本信息，scrapy version查看scrapy版本；scrapy version -v查看相关模块的版本
+  ● startproject：新建工程，scrapy startproject proj_name
+  ● genspider：生成spider模板，scrapy genspider spider_name url
+  ● list，列出所有的spider，scrapy list
+  ● view，返回网页源代码并在浏览器中打开，scrapy view url，有时页面渲染的结果和查看结果是不同的
+  ● parse，调用工程spider中的parse解析url，scrapy parse url
+  ● shell，进入交互调试模式，scrapy shell url
+  ● bench，可以用来检测scrapy是否安装成功Scrapy命令行格式
+  ● settings，获取爬虫配置信息：scrapy settings [options]
